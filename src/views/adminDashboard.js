@@ -3,31 +3,79 @@ export function showAdmin() {
     const user = JSON.parse(loggedInUserString);
     return `
     <main id="admin-container">
-        <h1>Holaaaaa ${user.name}</h1>
-        <div>
-            <button type="button" id="logout-button">Salir</button>
-        </div>
-        <table id="eventsTable">
-            <thead>
+    <h1>Holaaaaa ${user.name}</h1>
+    <div>
+    <button type="button" id="logout-button">Salir</button>
+    </div>
+    <table id="eventsTable">
+    <thead>
                 <tr>
                     <th>Name</th>
                     <th>Capacity</th>
                     <th>Date</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-        <form id="edit-form">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name" required>
-            <label for="capacity">Capacity</label>
-            <input type="capacity" name="text" id="capacity" required>
-            <label for="date">Date</label>
-            <input type="date" name="date" id="date" required>
-            <button id="button-create">Crear</button>
-        </form>
-    </main>
-    `
+                    </tr>
+                    </thead>
+                    <tbody></tbody>
+                    </table>
+                    <form id="edit-form">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required>
+                    <label for="capacity">Capacity</label>
+                    <input type="capacity" name="text" id="capacity" required>
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date" required>
+                    <button id="button-create">Crear</button>
+                    </form>
+                    </main>
+                    `
+}
+
+async function deleteEvent(id) {
+    try {
+        const response = await fetch(`http://localhost:3000/events/${id}`, {
+            method: "DELETE"
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        alert("Evento eliminado exitosamente!");
+    } catch (error) {
+        console.error("Error al eliminar el evento:", error);
+        alert("Hubo un error al eliminar el evento.");
+    }
+}
+
+async function readEvents() {
+    const tbody = document.querySelector("#eventsTable tbody");
+    tbody.innerHTML = ''; // Limpia las filas existentes
+
+    const response = await fetch("http://localhost:3000/events");
+    const events = await response.json();
+
+    events.forEach(event => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${event.name}</td>
+            <td>${event.capacity}</td>
+            <td>${event.date}</td>
+            <td>
+                <button class="delete-button" data-id="${event.id}">Eliminar</button>
+            </td>
+        `;
+        tbody.appendChild(row);
+
+        // Añadir el event listener directamente al botón recién creado
+        const deleteButton = row.querySelector(".delete-button");
+        deleteButton.addEventListener("click", async (e) => {
+            const eventId = e.target.dataset.id;
+            if (confirm("¿Estás seguro de que quieres eliminar este evento?")) {
+                await deleteEvent(eventId);
+                readEvents(); // Vuelve a renderizar la tabla después de eliminar
+            }
+        });
+    });
 }
 
 export async function settingsAdmin() {
@@ -73,30 +121,8 @@ export async function settingsAdmin() {
 
         const registeredEvent = await response.json();
         alert(`Evento ${registeredEvent.name}, creado exitosamente!`);
-        renderEventsTable();
+        readEvents();
     });
 
-    renderEventsTable();
+    readEvents();
 }
-
-async function renderEventsTable() {
-    const tbody = document.querySelector("#eventsTable tbody");
-    tbody.innerHTML = ""; 
-
-    const response = await fetch("http://localhost:3000/events");
-    const events = await response.json();
-
-    events.forEach(event => {
-        const row = document.createElement("tr");
-        row.innerHTML = `
-            <td>${event.name}</td>
-            <td>${event.capacity}</td>
-            <td>${event.date}</td>
-        `;
-        tbody.appendChild(row); // Append the row to the tbody
-    });
-}
-
-
-
-
