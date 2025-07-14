@@ -34,7 +34,7 @@ export function settingsLogin() {
 
         if (user) {
             localStorage.setItem("loggedInUser", JSON.stringify({ name: user.name }));
-            window.location.href = "/homeAdmin";
+            window.location.href = "/adminDashboard";
         } else {
             alert("Credenciales incorrectas. Usuario o contraseña no válidos.");
         }

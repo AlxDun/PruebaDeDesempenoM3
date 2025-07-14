@@ -1,0 +1,207 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f6;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#app {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    box-sizing: border-box;
+}
+
+h1 {
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+
+.login-container,
+.register-container,
+#admin-container,
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="date"],
+form input[type="capacity"] {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+form button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.form-buttons button {
+    flex: 1;
+    margin-top: 0;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#eventsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: #fdfdfd;
+}
+
+#eventsTable th,
+#eventsTable td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+#eventsTable th {
+    background-color: #e9ecef;
+    color: #333;
+    font-weight: bold;
+}
+
+#eventsTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#eventsTable tbody tr:hover {
+    background-color: #e2f0fb;
+}
+
+#eventsTable button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-right: 5px;
+    transition: background-color 0.2s ease;
+}
+
+#eventsTable .delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+#eventsTable .delete-button:hover {
+    background-color: #c82333;
+}
+
+#eventsTable .edit-button {
+    background-color: #ffc107;
+    color: #333;
+}
+
+#eventsTable .edit-button:hover {
+    background-color: #e0a800;
+}
+
+#logout-button {
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transition: background-color 0.3s ease;
+}
+
+#logout-button:hover {
+    background-color: #5a6268;
+}
+
+#admin-container > div {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.login-container > div,
+.register-container > div,
+.not-found-container > div {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.login-container > div a,
+.register-container > div a,
+.not-found-container > div a {
+    margin: 0 10px;
+}

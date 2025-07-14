@@ -22,7 +22,7 @@ const routes = {
         private: false,
         loggedIn: true
     },
-    "/homeAdmin": {
+    "/adminDashboard": {
         showView: showAdmin,
         afterRender: settingsAdmin,
         private: true,
@@ -42,7 +42,7 @@ export function router() {
             return;
         } else if (route.loggedIn && localStorage.loggedInUser) {
             alert("ya estas loggeado")
-            window.location.href = "/homeAdmin"
+            window.location.href = "/adminDashboard"
             return;
         }
         app.innerHTML = route.showView();

@@ -3,8 +3,7 @@ export function show404(){
     <main class="404-container">
         <h1>Pagina no encontrada</h1>
         <div>
-            <a href="/register" data-link>Registrate</a>
-            <a href="/login" data-link>Inicia sesion</a>
+            <a href="/adminDashboard" data-link>Admin Dashboard</a>
         </div>
     </main>
     `
