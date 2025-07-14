@@ -9,7 +9,7 @@ export function showRegister() {
             <input type="email" name="email" id="email" required>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
-            <button type="submit" id="register-button">Entrar</button>
+            <button id="register-button">Entrar</button>
         </form>
         <div>
             <a href="/login" data-link>Inicia sesion</a>

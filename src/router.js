@@ -1,5 +1,5 @@
 import { show404 } from "./views/404.js";
-import { showHome } from "./views/home.js";
+import { showAdmin, settingsAdmin } from "./views/adminDashboard.js";
 import { showLogin, settingsLogin } from "./views/login.js";
 import { showRegister, settingsRegister } from "./views/register.js";
 
@@ -22,12 +22,12 @@ const routes = {
         private: false,
         loggedIn: true
     },
-    "/home": {
-        showView: showHome,
-        afterRender: "settingsHome",
+    "/homeAdmin": {
+        showView: showAdmin,
+        afterRender: settingsAdmin,
         private: true,
         loggedIn: false
-    }
+    },
 }
 
 export function router() {
@@ -42,7 +42,7 @@ export function router() {
             return;
         } else if (route.loggedIn && localStorage.loggedInUser) {
             alert("ya estas loggeado")
-            window.location.href = "/home"
+            window.location.href = "/homeAdmin"
             return;
         }
         app.innerHTML = route.showView();

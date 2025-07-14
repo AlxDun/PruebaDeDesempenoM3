@@ -7,7 +7,7 @@ export function showLogin() {
             <input type="email" name="email" id="email" required>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required>
-            <button type="submit" id="login-button">Entrar</button>
+            <button id="login-button">Entrar</button>
         </form>
         <div>
             <a href="/register" data-link>Registrate</a>
@@ -34,7 +34,7 @@ export function settingsLogin() {
 
         if (user) {
             localStorage.setItem("loggedInUser", JSON.stringify({ name: user.name }));
-            window.location.href = "/home";
+            window.location.href = "/homeAdmin";
         } else {
             alert("Credenciales incorrectas. Usuario o contraseña no válidos.");
         }
